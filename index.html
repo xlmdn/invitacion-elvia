@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Invitación - 70 Años</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400&family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@200;300;400;500;600&family=Dancing+Script:wght@400;500;600;700&family=Cinzel:wght@400;500;600&display=swap');
@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
@@ -22,9 +23,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 10px;
             position: relative;
             overflow: hidden;
+            touch-action: pan-y;
         }
         
         body::before {
@@ -53,7 +55,9 @@
         .invitation-container {
             max-width: 500px;
             width: 100%;
-            height: 700px;
+            height: 90vh;
+            min-height: 600px;
+            max-height: 700px;
             position: relative;
             background: rgba(255, 228, 236, 0.9);
             backdrop-filter: blur(10px);
@@ -61,6 +65,7 @@
             box-shadow: 0 20px 40px rgba(244, 143, 177, 0.2);
             overflow: hidden;
             border: 1px solid rgba(255, 192, 203, 0.3);
+            touch-action: manipulation;
         }
         
         .screen {
@@ -74,10 +79,11 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 40px;
+            padding: 30px 20px 80px 20px;
             opacity: 0;
             transform: translateX(100%);
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
         }
         
         .screen.active {
@@ -96,7 +102,7 @@
         
         .age-number {
             font-family: 'Cinzel', serif;
-            font-size: 5.5rem;
+            font-size: clamp(3.5rem, 12vw, 5.5rem);
             font-weight: 600;
             background: linear-gradient(45deg, #b8860b, #daa520, #ffd700, #ffed4a);
             background-size: 200% 200%;
@@ -104,8 +110,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             position: relative;
-            margin-bottom: 20px;
-            letter-spacing: 4px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
             animation: goldFlow 4s ease-in-out infinite;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
@@ -116,12 +122,12 @@
             top: 0;
             left: 0;
             font-family: 'Cinzel', serif;
-            font-size: 5.5rem;
+            font-size: clamp(3.5rem, 12vw, 5.5rem);
             font-weight: 600;
             color: rgba(139, 69, 19, 0.4);
             z-index: -1;
-            transform: translate(4px, 4px);
-            letter-spacing: 4px;
+            transform: translate(3px, 3px);
+            letter-spacing: 2px;
         }
         
         @keyframes goldFlow {
@@ -137,12 +143,12 @@
         
         .subtitle {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
+            font-size: clamp(0.75rem, 3vw, 1rem);
             color: #ad1457;
-            margin-bottom: 40px;
+            margin-bottom: 25px;
             font-weight: 300;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 2px;
             position: relative;
         }
         
@@ -159,13 +165,13 @@
         
         .honoree-name {
             font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 10vw, 4rem);
             background: linear-gradient(45deg, #b8860b, #daa520, #ffd700, #ffed4a);
             background-size: 200% 200%;
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin: 30px 0;
+            margin: 20px 0;
             font-weight: 600;
             letter-spacing: 1px;
             animation: goldFlow 4s ease-in-out infinite;
@@ -179,47 +185,47 @@
             top: 0;
             left: 0;
             font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 10vw, 4rem);
             font-weight: 600;
             color: rgba(139, 69, 19, 0.3);
             z-index: -1;
-            transform: translate(3px, 3px);
+            transform: translate(2px, 2px);
             letter-spacing: 1px;
         }
         
         .description {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 4vw, 1.2rem);
             color: #c2185b;
-            line-height: 1.8;
-            margin: 40px 0;
+            line-height: 1.6;
+            margin: 25px 0;
             font-weight: 300;
-            max-width: 400px;
             font-style: italic;
             text-align: center;
+            max-width: 90%;
         }
         
         /* Screen 2 - Datos del evento */
         .screen-2 {
             background: linear-gradient(135deg, rgba(248, 187, 217, 0.9), rgba(255, 228, 236, 0.9));
             justify-content: flex-start;
-            padding-top: 80px;
+            padding-top: 60px;
         }
         
         .event-title {
             font-family: 'Cinzel', serif;
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 8vw, 2.8rem);
             color: #c2185b;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             font-weight: 500;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-shadow: 0 2px 4px rgba(194, 24, 91, 0.1);
         }
         
         .event-details {
             background: rgba(255, 228, 236, 0.8);
             backdrop-filter: blur(5px);
-            padding: 40px;
+            padding: 25px;
             border-radius: 15px;
             border: 1px solid rgba(216, 27, 96, 0.2);
             width: 100%;
@@ -230,7 +236,7 @@
         .detail-item {
             display: flex;
             flex-direction: column;
-            margin: 25px 0;
+            margin: 20px 0;
             text-align: left;
         }
         
@@ -239,26 +245,27 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
+            letter-spacing: 1px;
+            font-size: clamp(0.7rem, 3vw, 0.85rem);
             margin-bottom: 8px;
         }
         
         .detail-value {
             color: #c2185b;
             font-weight: 400;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 4vw, 1.2rem);
             font-family: 'Cormorant Garamond', serif;
+            line-height: 1.4;
         }
         
         .location-button {
             background: linear-gradient(135deg, #f8bbd9, #f48fb1);
             color: white;
             border: none;
-            padding: 12px 24px;
+            padding: 12px 20px;
             border-radius: 25px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
+            font-size: clamp(0.7rem, 3vw, 0.9rem);
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -267,17 +274,16 @@
             box-shadow: 0 4px 15px rgba(244, 143, 177, 0.3);
             text-decoration: none;
             display: inline-block;
-            margin-top: 8px;
+            margin-top: 10px;
+            min-height: 44px;
+            touch-action: manipulation;
         }
         
-        .location-button:hover {
+        .location-button:hover,
+        .location-button:active {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(244, 143, 177, 0.4);
             background: linear-gradient(135deg, #f48fb1, #e91e63);
-        }
-        
-        .location-button:active {
-            transform: translateY(0);
         }
         
         /* Screen 3 - Cuenta regresiva */
@@ -287,9 +293,9 @@
         
         .waiting-message {
             font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 10vw, 3.5rem);
             color: #c2185b;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             font-weight: 600;
             line-height: 1.2;
             text-shadow: 0 2px 4px rgba(194, 24, 91, 0.2);
@@ -298,9 +304,9 @@
         .countdown-section {
             background: linear-gradient(135deg, #f8bbd9, #f48fb1);
             color: white;
-            padding: 30px;
+            padding: 25px;
             border-radius: 15px;
-            margin-top: 40px;
+            margin-top: 30px;
             box-shadow: 0 10px 25px rgba(244, 143, 177, 0.4);
             width: 100%;
             max-width: 400px;
@@ -308,8 +314,8 @@
         
         .countdown-title {
             font-family: 'Lato', sans-serif;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+            margin-bottom: 15px;
             font-weight: 300;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -318,35 +324,39 @@
         .countdown-display {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 15px;
         }
         
         .countdown-item {
             text-align: center;
             background: rgba(255, 255, 255, 0.2);
-            padding: 15px 5px;
+            padding: 12px 5px;
             border-radius: 10px;
             backdrop-filter: blur(5px);
+            min-height: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .countdown-number {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
             font-weight: 700;
             display: block;
             margin-bottom: 5px;
         }
         
         .countdown-label {
-            font-size: 0.7rem;
+            font-size: clamp(0.6rem, 2.5vw, 0.7rem);
             font-weight: 300;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         
         .countdown-text {
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
             opacity: 0.95;
             font-weight: 300;
             line-height: 1.6;
@@ -355,20 +365,20 @@
         
         .footer-quote {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
             color: #d81b60;
             font-weight: 400;
             font-style: italic;
-            margin-top: 30px;
-            max-width: 350px;
+            margin-top: 25px;
             text-align: center;
             line-height: 1.6;
+            max-width: 90%;
         }
         
         /* Navigation */
         .nav-container {
             position: absolute;
-            bottom: 20px;
+            bottom: 15px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -382,13 +392,20 @@
             border-radius: 50%;
             background: rgba(194, 24, 91, 0.8);
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: manipulation;
+            min-height: 44px;
+            min-width: 44px;
         }
         
-        .nav-button:hover {
+        .nav-button:hover,
+        .nav-button:active {
             background: rgba(194, 24, 91, 1);
             transform: scale(1.1);
         }
@@ -403,64 +420,151 @@
             position: absolute;
             top: 0;
             left: 0;
-            height: 3px;
+            height: 4px;
             background: linear-gradient(90deg, #f8bbd9, #f48fb1);
             transition: width 0.8s ease;
         }
         
+        /* Swipe indicator */
+        .swipe-indicator {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        
+        .swipe-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(194, 24, 91, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .swipe-dot.active {
+            background: rgba(194, 24, 91, 0.8);
+            transform: scale(1.2);
+        }
+        
+        /* Touch gestures */
+        .invitation-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Responsive adjustments */
         @media (max-width: 480px) {
             .invitation-container {
-                height: 650px;
-                margin: 10px;
-            }
-            
-            .age-number {
-                font-size: 4.5rem;
-                letter-spacing: 3px;
-            }
-            
-            .age-number::before {
-                font-size: 4.5rem;
-                letter-spacing: 3px;
-            }
-            
-            .honoree-name {
-                font-size: 3.2rem;
-            }
-            
-            .honoree-name::before {
-                font-size: 3.2rem;
-            }
-            
-            .event-title {
-                font-size: 2.2rem;
-            }
-            
-            .waiting-message {
-                font-size: 2.8rem;
+                height: 95vh;
+                min-height: 550px;
+                border-radius: 15px;
+                margin: 5px;
             }
             
             .screen {
-                padding: 30px 25px;
+                padding: 20px 15px 70px 15px;
             }
             
-            .countdown-number {
-                font-size: 1.5rem;
+            .event-details {
+                padding: 20px;
             }
             
-            .countdown-label {
-                font-size: 0.6rem;
+            .countdown-section {
+                padding: 20px;
             }
             
-            .location-button {
-                font-size: 0.8rem;
-                padding: 10px 20px;
+            .nav-container {
+                bottom: 10px;
+                gap: 10px;
+            }
+            
+            .nav-button {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 320px) {
+            .invitation-container {
+                height: 98vh;
+                min-height: 500px;
+                border-radius: 10px;
+                margin: 2px;
+            }
+            
+            .screen {
+                padding: 15px 10px 60px 10px;
+            }
+            
+            .event-details {
+                padding: 15px;
+            }
+            
+            .countdown-section {
+                padding: 15px;
+            }
+            
+            .countdown-item {
+                padding: 8px 3px;
+                min-height: 60px;
+            }
+        }
+        
+        /* Landscape orientation */
+        @media (orientation: landscape) and (max-height: 600px) {
+            .invitation-container {
+                height: 95vh;
+                max-height: none;
+            }
+            
+            .screen {
+                padding: 15px 20px 60px 20px;
+            }
+            
+            .screen-2 {
+                padding-top: 30px;
+            }
+            
+            .age-number {
+                margin-bottom: 10px;
+            }
+            
+            .subtitle {
+                margin-bottom: 15px;
+            }
+            
+            .honoree-name {
+                margin: 10px 0;
+            }
+            
+            .description {
+                margin: 15px 0;
+            }
+            
+            .event-title {
+                margin-bottom: 20px;
+            }
+            
+            .waiting-message {
+                margin-bottom: 20px;
+            }
+            
+            .countdown-section {
+                margin-top: 20px;
+            }
+            
+            .footer-quote {
+                margin-top: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="invitation-container">
+    <div class="invitation-container" id="invitationContainer">
         <div class="progress-bar" id="progressBar"></div>
         
         <!-- Screen 1: Introducción -->
@@ -489,12 +593,11 @@
                 </div>
                 <div class="detail-item">
                     <span class="detail-text">Lugar</span>
-                    <span class="detail-value">Salón de Eventos Amarillo <br>5 de Mayo no. 72, Emiliano Zapata, Hgo</span>
+                    <span class="detail-value">Salón de Eventos Amarillo<br>5 de Mayo no. 72, Emiliano Zapata, Hgo</span>
                     <a href="https://maps.app.goo.gl/dJH5ZTbPjEDB1qhZ8" target="_blank" class="location-button">
-                         Ver ubicación
+                        📍 Ver ubicación
                     </a>
                 </div>
-          
             </div>
         </div>
         
@@ -523,13 +626,20 @@
                     </div>
                 </div>
                 <p class="countdown-text">
-                    Para la celebración<br>
+                    Para la celebración
                 </p>
             </div>
             
             <p class="footer-quote">
                 "Porque los mejores momentos se viven con quienes amamos."
             </p>
+        </div>
+        
+        <!-- Swipe indicators -->
+        <div class="swipe-indicator">
+            <div class="swipe-dot active" data-screen="1"></div>
+            <div class="swipe-dot" data-screen="2"></div>
+            <div class="swipe-dot" data-screen="3"></div>
         </div>
         
         <!-- Navigation -->
@@ -542,6 +652,66 @@
     <script>
         let currentScreen = 1;
         const totalScreens = 3;
+        let startX = 0;
+        let startY = 0;
+        let isDragging = false;
+        let isScrolling = false;
+        
+        // Touch event handlers
+        const container = document.getElementById('invitationContainer');
+        
+        container.addEventListener('touchstart', handleTouchStart, { passive: true });
+        container.addEventListener('touchmove', handleTouchMove, { passive: false });
+        container.addEventListener('touchend', handleTouchEnd, { passive: true });
+        
+        function handleTouchStart(e) {
+            const touch = e.touches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+            isDragging = true;
+            isScrolling = false;
+        }
+        
+        function handleTouchMove(e) {
+            if (!isDragging) return;
+            
+            const touch = e.touches[0];
+            const deltaX = touch.clientX - startX;
+            const deltaY = touch.clientY - startY;
+            
+            // Determine if this is a horizontal or vertical swipe
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
+                // Horizontal swipe - prevent default to avoid scrolling
+                e.preventDefault();
+                isScrolling = false;
+            } else if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 10) {
+                // Vertical swipe - allow scrolling
+                isScrolling = true;
+            }
+        }
+        
+        function handleTouchEnd(e) {
+            if (!isDragging || isScrolling) {
+                isDragging = false;
+                return;
+            }
+            
+            const touch = e.changedTouches[0];
+            const deltaX = touch.clientX - startX;
+            const minSwipeDistance = 50;
+            
+            if (Math.abs(deltaX) > minSwipeDistance) {
+                if (deltaX > 0) {
+                    // Swipe right - go to previous screen
+                    changeScreen(-1);
+                } else {
+                    // Swipe left - go to next screen
+                    changeScreen(1);
+                }
+            }
+            
+            isDragging = false;
+        }
         
         function updateProgress() {
             const progress = (currentScreen / totalScreens) * 100;
@@ -554,6 +724,17 @@
             
             prevBtn.disabled = currentScreen === 1;
             nextBtn.disabled = currentScreen === totalScreens;
+        }
+        
+        function updateSwipeIndicators() {
+            const dots = document.querySelectorAll('.swipe-dot');
+            dots.forEach((dot, index) => {
+                if (index + 1 === currentScreen) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
         }
         
         function changeScreen(direction) {
@@ -583,6 +764,7 @@
                 currentScreen = newScreen;
                 updateProgress();
                 updateNavButtons();
+                updateSwipeIndicators();
             }, 100);
         }
         
@@ -614,10 +796,21 @@
         // Initialize
         updateProgress();
         updateNavButtons();
+        updateSwipeIndicators();
         updateCountdown();
         
         // Update countdown every second
         setInterval(updateCountdown, 1000);
+        
+        // Prevent zoom on double tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
     </script>
 </body>
 </html>
